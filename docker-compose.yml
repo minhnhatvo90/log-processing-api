@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  log-api:
+    container_name: log-api
+    restart: on-failure
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    volumes:
+      - ./:/log-api
+      - /log-api/node_modules
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
